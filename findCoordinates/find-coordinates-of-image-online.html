@@ -1,0 +1,113 @@
+<html>
+    <head>
+    <title>Find Coordinates of Image</title>
+    <meta name="description" content="Updated Code with UI to find coordinates of an image online, We provide Online Tools to map an Image in HTML by providing Coordinates in HTML Image MAPs."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+
+    </style>
+	<link rel="stylesheet" href="styles.css">
+</head>
+    <body>
+      <div id="pageContent">
+        <div id="myContentDiv">
+          <h1>Find Coordinates of Image</h1>
+        </div>
+        
+        <div id="appCode">
+          <form action="" method="POST" enctype="multpart/form-data">
+              <input id="image" type="file"/>
+          </form>
+        <div class="img_and_scheme">
+            <img id="show_image">
+
+            <div class="scheme">
+                <svg id="svg">
+                    <g id="floor">
+                        <polygon points="442,217,528,217,528,259,442,259" class="isElevatorOrStairs" id="bp_id_3e5aa691-1970-4f8d-90ea-1df4232cb4e2"></polygon>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+
+          <div class="cursorPosition"></div>
+          <div id="pointFieldsContainer"></div>
+          <button onclick="clearTextArea()">Clear</button>
+
+          <h2>Polygon Co-Ordinates <span id="myPolyCo"></span></h2>
+              <textarea id="poly" style="display:none"></textarea>
+              <textarea id="polyCode"></textarea>
+        </div>
+
+
+
+        <div id="mobiuleaLERT"><h3>Sorry, This webpage is not fully Supported in <b>MOBILE</b> or <b>Small Screen Devices</b>.</h3></div>
+
+        <script  type="module" src="script.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            let scheme = document.querySelector('.scheme svg');
+            // Функция для обработки события mousemove
+            function handleMouseMove(event) {
+                // Получаем координаты курсора относительно окна браузера
+                //console.log(event.target)
+                //console.log(scheme)
+                // if  (event.target != scheme) {
+                //     console.log('bibki')
+                //     return
+                // }
+
+                const x = Math.max(0, event.clientX - scheme.getBoundingClientRect().left);
+                const y = Math.max(0, event.clientY - scheme.getBoundingClientRect().top);
+
+
+                // var x = event.clientX;
+                // var y = event.clientY;
+
+                //console.log(`clientX: ${event.clientX}, event.clientY: ${event.clientY}; getBoundingClientRect().left: ${event.target.getBoundingClientRect().left}, getBoundingClientRect().top: ${event.target.getBoundingClientRect().top}`);
+
+                // Выводим координаты в консоль или на страницу
+                document.querySelector('.cursorPosition').innerText = `X: ${x}, Y: ${y}`;
+            }
+
+            // Добавляем обработчик события mousemove к всему документу
+            document.addEventListener('mousemove', handleMouseMove);
+        });
+        </script>
+        <script>
+            // Функция для создания текстового поля с заданным значением
+            function createPointInput(value) {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = value;
+                return input;
+            }
+
+            // Выбор элемента <polygon> по его ID
+            const polygon = document.getElementById('bp_id_3e5aa691-1970-4f8d-90ea-1df4232cb4e2');
+
+            // Получение текущих точек
+            let pointsString = polygon.getAttribute('points').split(',');
+
+            // Создание контейнера для текстовых полей, если он еще не существует
+            let container = document.getElementById('pointFieldsContainer');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'pointFieldsContainer';
+                document.body.appendChild(container);
+            }
+
+            // Добавление текстовых полей для каждой точки
+            pointsString.forEach(point => {
+                const input = createPointInput(point.trim());
+                container.appendChild(input);
+                container.appendChild(document.createTextNode(', ')); // Добавляем запятую и пробел после каждого поля
+            });
+        </script>
+
+
+      </div>
+    </body>
+</html>

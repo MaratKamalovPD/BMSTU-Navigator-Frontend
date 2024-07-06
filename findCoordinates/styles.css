@@ -1,0 +1,112 @@
+body,html{
+          padding: 0;
+          margin: 0;
+          text-align: center;
+          font-family: Georgia, serif;
+          font-size: 1.1em;
+          line-height: 1.3em;
+        }
+        #pageContent{
+          width: 100%;
+          min-height: 100vh;
+          margin: 10vh auto;
+        }
+
+        input{
+          width: 90%;
+          max-width: 400px;
+          text-align: center;
+          margin: 25px auto;
+          padding: 10px 0;
+          background-color: lightgray;
+          border:4px dotted gray;
+        }
+        #polyCode{
+          min-height: 70px;
+        }
+
+        button{
+          width: 100px;
+          height: 35px;
+          border-radius: 0;
+          border:0;
+          margin: auto;
+        }
+        h2 span {
+          color: rgba(0,0,0,0.6);
+          font-size: 1rem;
+          font-style: italic;
+        }
+        textarea{
+          width: 90%;
+          max-width: 500px;
+          height: 40px;
+          text-align: center;
+          padding-top: 10px;
+        }
+        #mobiuleaLERT{
+          display: none;
+          width: 100%;
+          background-color: gray;
+          color: white;
+          padding: 4px 0;
+          text-align: center;
+          position: fixed;
+          bottom: 0;
+        }
+        #mobiuleaLERT b{
+          text-decoration: underline;
+          font-weight: bolder;
+        }
+        #ytContent{
+          width: 90%;
+          margin: auto;
+        }
+        #ytContent > iframe{
+          width: 100%;
+          height: auto;
+          aspect-ratio: 2/1;
+          max-width: 800px;
+        }
+        #appCode{
+          width: 100%;
+          margin: 10vh auto;
+        }
+        #theTextContent{
+          width: 90%;
+          margin: 80px auto;
+          max-width: 1920px;
+          text-align: left;
+        }
+
+        @media (max-width : 600px){
+          #mobiuleaLERT{
+            display: block;
+          }
+
+}
+
+.scheme {
+  position: absolute;
+}
+
+.scheme svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.isElevatorOrStairs {
+    fill: #4CC9F0 !important;
+    stroke: #4682B4;
+}
+
+.cursorPosition {
+    display: none;
+}
+
+.img_and_scheme{
+    display: flex;
+    justify-content: center;
+}
